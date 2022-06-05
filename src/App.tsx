@@ -1,25 +1,36 @@
+import Footer from 'components/Footer';
+import Header from 'components/Header';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from 'pages/Home';
+import Features from 'pages/Features';
+import Pricing from 'pages/Pricing';
+import Stories from 'pages/Stories';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from 'theme';
 
-function App() {
+function App(props: any) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+      <Header/>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="features" element={<Features />} />
+          <Route path="pricing" element={<Pricing />} />
+          <Route path="stories" element={<Stories />} />
+        </Routes>
+        <Footer/>
+    </ThemeProvider>
+      
+    </BrowserRouter>
+    </>
   );
 }
 
