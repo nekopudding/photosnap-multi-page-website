@@ -18,7 +18,25 @@ const icons = [
   () => <Pinterest/>,
   () => <Instagram/>,
 ]
-const pages = ['Home', 'Stories', 'Features', 'Pricing'];
+const pages = [
+  {
+    name: 'Home',
+    to: '/'
+  },
+  {
+    name: 'Stories',
+    to: '/stories',
+  },
+  {
+    name:'Features',
+    to: '/features',
+  },
+  {
+    name: 'Pricing',
+    to: '/pricing'
+  },
+]
+const baseRoute = 'photosnap-multi-page-website'
 
 function Footer() {
   return (
@@ -42,8 +60,8 @@ function Footer() {
           </Box>
         </Stack>
         <Stack sx={{ml: '109px', flexGrow: 1, justifyContent: 'space-between'}}>
-          {pages.map(page => 
-            <Button variant='text' invertColors>{page}</Button>
+          {pages.map(({name,to}) => 
+            <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
           )}
         </Stack>
         <Stack sx={{justifyContent: 'space-between'}}>

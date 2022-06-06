@@ -3,12 +3,6 @@ import React from 'react'
 function Pricing() {
   return (
     <>
-      Stories
-      Features
-      Pricing
-
-      Get an invite
-
       Pricing
 
       Create a your stories, Photosnap is a platform for photographers and visual storytellers. 
@@ -55,15 +49,6 @@ function Pricing() {
       We're in Beta. Get your invite today!
       
       Get an invite
-
-      Home
-      Stories
-      Features
-      Pricing
-
-      Get an invite
-
-      Copyright 2019. All Rights Reserved
     </>
   )
 }

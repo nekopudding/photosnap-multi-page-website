@@ -5,8 +5,21 @@ import theme from 'theme'
 import Button from './Button/Button'
 
 const pages = [
-  'Stories','Features','Pricing'
+  {
+    name: 'Stories',
+    to: '/stories',
+  },
+  {
+    name:'Features',
+    to: '/features',
+  },
+  {
+    name: 'Pricing',
+    to: '/pricing'
+  },
 ]
+const baseRoute = 'photosnap-multi-page-website'
+
 function Header() {
   return (
     <>
@@ -23,9 +36,9 @@ function Header() {
               }
             }}
           >
-            {pages.map((page) => (
-              <Button key={page} variant='text'>
-                {page}
+            {pages.map(({name,to}) => (
+              <Button key={name} variant='text' link to={baseRoute + to}>
+                {name}
               </Button>
             ))}
           </Box>

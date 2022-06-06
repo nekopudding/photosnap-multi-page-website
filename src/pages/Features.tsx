@@ -4,14 +4,6 @@ function Features() {
   return (
     <>
     <h1>Features</h1>
-      Stories
-      Features
-      Pricing
-
-      Get an invite
-
-      Features
-
       We make sure all of our features are designed to be loved by every aspiring and even 
       professional photograpers who wanted to share their stories.
 
@@ -48,15 +40,6 @@ function Features() {
       We're in Beta. Get your invite today!
       
       Get an invite
-
-      Home
-      Stories
-      Features
-      Pricing
-
-      Get an invite
-
-      Copyright 2019. All Rights Reserved
     </>
   )
 }
