@@ -3,11 +3,12 @@ import { createTheme } from "@mui/material";
 const _ = {
   white: 'hsl(0,0%,100%)',
   grey: 'hsl(0,0%,87%)',
+  darkgrey: '#979797',
   black: 'hsl(0,0%,0%)',
 
   a1: 'hsl(28,100%,79%)',
   a2: 'hsl(329,36%,59%)',
-  a3: 'hsl(229,100%,67%)'
+  a3: 'hsl(229,100%,67%)',
 }
 
 // @ts-nocheck @ts-ignore
@@ -23,6 +24,7 @@ const theme = createTheme({
   },
   palette: {
     ..._,
+    gradient: `linear-gradient(0deg, ${_.a1} 0%, ${_.a2} 50%, ${_.a3} 100%)`,
     background: {
       default: _.white,
     },

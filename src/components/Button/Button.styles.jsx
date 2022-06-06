@@ -46,7 +46,7 @@ export const TextButton = styled(Box,{
     textTransform: 'uppercase',
     textDecoration: 'none',
     '&:hover': {
-      color: theme.palette.grey
+      color: theme.palette.darkgrey
     }
   },
 }));

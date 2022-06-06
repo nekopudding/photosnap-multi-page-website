@@ -1,0 +1,24 @@
+.section1 {
+  height: 650px;
+  display: flex;
+}
+.section2 {
+  height: 600px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.section3 {
+  height: 600px;
+  display: flex;
+}
+
+.text-block {
+  position: relative;
+  width: 100%;
+}
+
+.text-block-text {
+  margin: 0 auto;
+  width: 387px;
+  height: 304px;
+}

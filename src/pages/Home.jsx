@@ -1,64 +1,117 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, styled } from '@mui/material'
 import Button from 'components/Button/Button'
 import React from 'react'
 import theme from 'theme'
-import jumbotronBg from 'assets/home/desktop/create-and-share.jpg';
+import section1Bg from 'assets/home/desktop/create-and-share.jpg';
+import section2Bg from 'assets/home/desktop/beautiful-stories.jpg';
+import section3Bg from 'assets/home/desktop/designed-for-everyone.jpg'
 import {ReactComponent as ArrowIcon} from 'assets/shared/desktop/arrow.svg';
+import './Home.css'
+
+const TextBlock = styled(Box,{
+  shouldForwardProp: (prop)=> prop !== 'invertColors',
+})(({ invertColors, theme }) => ({
+  minWidth: 610,
+  height: '100%',
+  backgroundColor: invertColors ? theme.palette.black : theme.palette.white,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexBasis: '40%',
+  flexGrow: 1
+}));
+
+const ImageBlock = styled(Box)(({ theme }) => ({
+  objectFit: 'cover', 
+  flexBasis: '60%', 
+  flexShrink: 1, 
+  width: '50%', 
+  overflow: 'hidden', 
+  maxWidth: 830
+}));
+
+const TextBlockHeader = styled(Typography,{
+  shouldForwardProp: (prop)=> prop !== 'invertColors',
+})(({ invertColors, theme }) => ({
+  textTransform: 'uppercase',
+  color: invertColors ? theme.palette.white : theme.palette.black
+}));
+
+const TextBlockBody = styled(Typography)(({ theme }) => ({
+  marginTop: '21px', color: theme.palette.darkgrey
+}));
+
+const TextBlockActions = styled(Box)(({ theme }) => ({
+  marginTop: '44px', display: 'flex', alignItems: 'center'
+}));
+
+
+const sections = [
+  {
+    className: 'section1',
+    header: 'Create and share your photo Stories.',
+    body: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
+    actionText: 'Get an invite',
+    invertColors: true,
+    image: section1Bg
+  },
+  {
+    className: 'section2',
+    header: 'Beautiful stories every time',
+    body: 'We provide design templates to ensure your stories look terrific. Easily add photos, text, embed maps and media from other networks. Then share your story with everyone.',
+    actionText: 'View the stories',
+    invertColors: false,
+    image: section2Bg
+  },
+  {
+    className: 'section3',
+    header: 'Create and share your photo Stories.',
+    body: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
+    actionText: 'View the stories',
+    invertColors: false,
+    image: section3Bg
+  },
+]
 
 function Home() {
   return (
     <>
+      {sections.map(s => 
+        <Box className={s.className} key={s.className}>
+          <TextBlock invertColors={s.invertColors}>
+            <Box className='text-block'>
+              {s.className === 'section1' && <Box sx={{position: 'absolute', width: 6, height: '100%', background: theme.palette.gradient}}/>}
+              <Box className='text-block-text'>
+                <TextBlockHeader variant='h1' invertColors={s.invertColors}>{s.header}</TextBlockHeader>
+                <TextBlockBody variant='body' component='p'>{s.body}</TextBlockBody>
+                <TextBlockActions>
+                  <Button variant='underlined' invertColors={s.invertColors}>{s.actionText}</Button>
+                  <Box sx={{'& g':{stroke: s.invertColors ? '#fff' : '#000'}, ml: '18px' }}><ArrowIcon/></Box>
+                </TextBlockActions>
+              </Box>
+            </Box>
+          </TextBlock>
+          <ImageBlock component='img' src={s.image} alt="background image"/>
+        </Box>
+      )}
+        
       <Box 
         sx={{
-          height: 650,
-          display: 'flex'
+          height: 500,
+          display: 'flex',
         }}
+        className='section4'
       >
-        <Box 
-          sx={{
-            minWidth: 610,
-            height: '100%',
-            bgcolor: theme.palette.black,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexBasis: '40%',
-            flexGrow: 1
-          }}
-        >
-          <Box sx={{position: 'relative'}}>
-            <Box sx={{position: 'absolute', width: 6, height: '100%', background: `linear-gradient(0deg, ${theme.palette.a1} 0%, ${theme.palette.a2} 50%, ${theme.palette.a3} 100%)`}}/>
-            <Box sx={{mx: '112px'}}>
-              <Typography variant='h1' sx={{color: theme.palette.white, textTransform: 'uppercase'}}>Create and share your photo Stories.</Typography>
-              <Typography variant='body' sx={{mt: '21px', color: theme.palette.grey}} component='p'>Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.</Typography>
-              <Box sx={{mt: '44px', display: 'flex', alignItems: 'center'}}>
-                <Button variant='underlined' invertColors>get an invite</Button>
-                <Box sx={{'& g':{stroke:'#fff'}, ml: '18px' }}><ArrowIcon/></Box>
-              </Box>
-              
-            </Box>
-          </Box>
-        </Box>
 
-        <Box component='img' src={jumbotronBg} alt="background image" sx={{objectFit: 'cover', flexBasis: '60%', flexShrink: 1, width: '50%', overflow: 'hidden', maxWidth: 830}}/>
-        
       </Box>
+     
 
       
 
-      Beautiful stories every time
       
-      We provide design templates to ensure your stories look terrific. Easily add 
-      photos, text, embed maps and media from other networks. Then share your story 
-      with everyone.
 
-      View the stories
-
-      Designed for everyone
-
-      Photosnap can help you create stories that resonate with your audience.  Our 
-      tool is designed for photographers of all levels, brands, businesses you name it. 
+      
 
       View the stories
 
