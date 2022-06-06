@@ -1,10 +1,15 @@
 import { Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {ContainedButton, TextButton} from  './Button.styles.jsx'
+import {ContainedButton, TextButton,UnderlinedButton} from  './Button.styles'
 
-
-function Button(props) {
+const Button: React.FC<{
+  children: string, 
+  variant: string, 
+  to: string, 
+  link: boolean, 
+  invertColors: boolean
+}> = (props) => {
   const {children,variant,to, link} = props;
   return (
     <>
@@ -20,6 +25,17 @@ function Button(props) {
       </ContainedButton>
     }
 
+    {(variant === 'underlined') &&
+      <UnderlinedButton {...props}>
+        {link ? 
+          <Link to={to}>
+            <Typography variant='h4' children={children}/>
+          </Link>
+          :
+          <Typography variant='h4' children={children}/>
+        }
+      </UnderlinedButton>
+    }
     {(variant === 'text') &&
       <TextButton {...props}>
         {link ? 
@@ -30,6 +46,7 @@ function Button(props) {
           <Typography variant='h4' children={children}/>
         }
       </TextButton>
+
     }
     
     </>
@@ -43,4 +60,4 @@ Button.defaultProps = {
   invertColors: false
 }
 
-export default Button
+export default Button;

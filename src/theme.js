@@ -1,4 +1,3 @@
-
 import { createTheme } from "@mui/material";
 
 const _ = {
@@ -9,13 +8,6 @@ const _ = {
   a1: 'hsl(28,100%,79%)',
   a2: 'hsl(329,36%,59%)',
   a3: 'hsl(229,100%,67%)'
-}
-const buttonOverride = {
-  backgroundColor: 'transparent',
-  '&:hover': {
-    textDecoration: 'underline',
-    backgroundColor: 'inherit',
-  }
 }
 
 // @ts-nocheck @ts-ignore

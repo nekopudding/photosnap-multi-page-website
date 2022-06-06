@@ -6,17 +6,28 @@ import theme from 'theme'
 function Home() {
   return (
     <>
-    <Typography variant='h2'>DM SANS BOLD</Typography>
-    <Button variant='contained'>Button 2</Button>
-    <Button variant='text'>Button 2</Button>
-    <Box sx={{bgcolor: theme.palette.black, p:4,m:2}}>
-      <Button variant='contained' invertColors>Button 3</Button>
-      <Button variant='text' invertColors>Button 4</Button>
-    </Box>
-      Stories
-      Features
-      Pricing
-
+      <Box 
+        sx={{
+          height: 650
+        }}
+      >
+        <Box 
+          sx={{
+            width: 610,
+            height: '100%',
+            bgcolor: theme.palette.black,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box sx={{position: 'relative'}}>
+            <Box sx={{position: 'absolute', width: 6, height: '100%', background: `linear-gradient(0deg, ${theme.palette.a1} 0%, ${theme.palette.a2} 50%, ${theme.palette.a3} 100%)`}}/>
+            <Typography variant='h1' sx={{color: theme.palette.white, textTransform: 'uppercase'}}>Create and share your photo Stories</Typography>
+          </Box>
+        </Box>
+      </Box>
       Get an invite
 
       Create and share your photo Stories
