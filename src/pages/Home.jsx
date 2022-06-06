@@ -1,4 +1,4 @@
-import { Box, Typography, styled, Divider } from '@mui/material'
+import { Box, Typography, styled, Divider, Stack } from '@mui/material'
 import Button from 'components/Button/Button'
 import React from 'react'
 import theme from 'theme'
@@ -10,6 +10,9 @@ import sunsetCityscapes from 'assets/stories/desktop/cityscapes.jpg'
 import eighteenDaysVoyage from 'assets/stories/desktop/18-days-voyage.jpg'
 import architecturals from 'assets/stories/desktop/architecturals.jpg'
 import {ReactComponent as ArrowIcon} from 'assets/shared/desktop/arrow.svg';
+import {ReactComponent as Responsive} from 'assets/features/desktop/responsive.svg';
+import {ReactComponent as NoLimit} from 'assets/features/desktop/no-limit.svg';
+import {ReactComponent as Embed} from 'assets/features/desktop/embed.svg';
 import './Home.css'
 
 const TextBlock = styled(Box,{
@@ -42,10 +45,10 @@ const TextBlockHeader = styled(Typography,{
 }));
 
 const TextBlockBody = styled(Typography)(({ theme }) => ({
-  marginTop: '21px', color: theme.palette.darkgrey
+  marginTop: '21px'
 }));
 
-const TextBlockActions = styled(Box)(({ theme }) => ({
+export const TextBlockActions = styled(Box)(({ theme }) => ({
   marginTop: '44px', display: 'flex', alignItems: 'center',
   width: 'fit-content',
   '&:hover *': {
@@ -101,6 +104,24 @@ const stories = [
     title: 'Architecturals',
     author: 'Samantha Brooke',
     image: architecturals
+  },
+]
+
+const features = [
+  {
+    icon: ()=><Responsive/>,
+    title: '100% Responsive',
+    content: 'No matter which the device you’re on, our site is fully responsive and stories look beautiful on any screen.',
+  },
+  {
+    icon: ()=> <NoLimit/>,
+    title: 'No Photo Upload Limit',
+    content: 'Our tool has no limits on uploads or bandwidth. Freely upload in bulk and share all of your stories in one go.',
+  },
+  {
+    icon: ()=><Embed/>,
+    title: 'Available to Embed',
+    content: 'Embed Tweets, Facebook posts, Instagram media, Vimeo or YouTube videos, Google Maps, and more.',
   },
 ]
 
@@ -194,55 +215,26 @@ function Home() {
           )
         })}
       </Box>
-     
+      <Box sx={{
+        my: '120px',
+        mx: '165px',
+        display: 'flex',
+        '& > * + *': {
+          ml: '30px'
+        }
+      }}>
+        {features.map(feature => {
+          const {icon,title,content} = feature;
+          return (
+            <Stack key={title} sx={{alignItems: 'center',justifyContent:'flex-end'}}>
+              <Box sx={{flexGrow: 1, display:'flex',alignItems:'center'}}>{icon()}</Box>
+              <Typography variant='h3' sx={{mt: 6}}>{title}</Typography>
+              <Typography variant='body'>{content}</Typography>
+            </Stack>
+          )
+        })}
 
-      
-
-      
-
-      
-
-      View the stories
-
-      The Mountains
-      by John Appleseed
-      Read Story
-
-      Sunset Cityscapes
-      by Benjamin Cruz
-      Read Story
-
-      18 Days Voyage
-      by Alexei Borodin
-      Read Story
-
-      Architecturals
-      by Samantha Brooke
-      Read Story
-
-      100% Responsive
-
-      No matter which the device you’re on, our site is fully responsive and stories 
-      look beautiful on any screen.
-
-      No Photo Upload Limit
-
-      Our tool has no limits on uploads or bandwidth. Freely upload in bulk and 
-      share all of your stories in one go.
-
-      Available to Embed
-
-      Embed Tweets, Facebook posts, Instagram media, Vimeo or YouTube videos, 
-      Google Maps, and more. 
-
-      Home
-      Stories
-      Features
-      Pricing
-
-      Get an invite
-
-      Copyright 2019. All Rights Reserved
+      </Box>
     </>
   )
 }

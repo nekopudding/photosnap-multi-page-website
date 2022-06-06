@@ -64,6 +64,7 @@ const theme = createTheme({
       fontSize: '15px',
       lineHeight: '25px',
       letterSpacing: 0,
+      opacity: 0.6
     }
   },
 })
