@@ -2,38 +2,50 @@ import { Box, Typography } from '@mui/material'
 import Button from 'components/Button/Button'
 import React from 'react'
 import theme from 'theme'
+import jumbotronBg from 'assets/home/desktop/create-and-share.jpg';
+import {ReactComponent as ArrowIcon} from 'assets/shared/desktop/arrow.svg';
 
 function Home() {
   return (
     <>
       <Box 
         sx={{
-          height: 650
+          height: 650,
+          display: 'flex'
         }}
       >
         <Box 
           sx={{
-            width: 610,
+            minWidth: 610,
             height: '100%',
             bgcolor: theme.palette.black,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
+            flexBasis: '40%',
+            flexGrow: 1
           }}
         >
           <Box sx={{position: 'relative'}}>
             <Box sx={{position: 'absolute', width: 6, height: '100%', background: `linear-gradient(0deg, ${theme.palette.a1} 0%, ${theme.palette.a2} 50%, ${theme.palette.a3} 100%)`}}/>
-            <Typography variant='h1' sx={{color: theme.palette.white, textTransform: 'uppercase'}}>Create and share your photo Stories</Typography>
+            <Box sx={{mx: '112px'}}>
+              <Typography variant='h1' sx={{color: theme.palette.white, textTransform: 'uppercase'}}>Create and share your photo Stories.</Typography>
+              <Typography variant='body' sx={{mt: '21px', color: theme.palette.grey}} component='p'>Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.</Typography>
+              <Box sx={{mt: '44px', display: 'flex', alignItems: 'center'}}>
+                <Button variant='underlined' invertColors>get an invite</Button>
+                <Box sx={{'& g':{stroke:'#fff'}, ml: '18px' }}><ArrowIcon/></Box>
+              </Box>
+              
+            </Box>
           </Box>
         </Box>
+
+        <Box component='img' src={jumbotronBg} alt="background image" sx={{objectFit: 'cover', flexBasis: '60%', flexShrink: 1, width: '50%', overflow: 'hidden', maxWidth: 830}}/>
+        
       </Box>
-      Get an invite
 
-      Create and share your photo Stories
-
-      Photosnap is a platform for photographers and visual storytellers. We make it 
-      easy to share photos, tell stories and connect with others.
+      
 
       Beautiful stories every time
       
