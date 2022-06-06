@@ -65,9 +65,9 @@ function Footer() {
           )}
         </Stack>
         <Stack sx={{justifyContent: 'space-between'}}>
-          <Box sx={{display: 'flex','&:hover *': { textDecoration: 'underline' }}}>
+          <Box sx={{display: 'flex',alignItems: 'center', '&:hover *': { textDecoration: 'underline' }}}>
             <Button variant='underlined' invertColors>Get an invite</Button>
-            <Box sx={{'& g':{stroke: '#fff' }, ml: '18px' }}><ArrowIcon/></Box>
+            <Box sx={{'& g':{stroke: '#fff' }, ml: '18px', display: 'flex', alignItems: 'center' }}><ArrowIcon/></Box>
           </Box>
           <Typography sx={{color: theme.palette.grey, opacity: 0.525}}>Copyright 2022. All Rights Reserved</Typography>
         </Stack>

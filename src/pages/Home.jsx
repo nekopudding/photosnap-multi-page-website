@@ -44,16 +44,17 @@ const TextBlockHeader = styled(Typography,{
   color: invertColors ? theme.palette.white : theme.palette.black
 }));
 
-const TextBlockBody = styled(Typography)(({ theme }) => ({
-  marginTop: '21px'
+const TextBlockBody = styled(Typography,{
+  shouldForwardProp: (prop)=> prop !== 'invertColors',
+})(({ invertColors, theme }) => ({
+  marginTop: '21px',
+  color: invertColors ? theme.palette.white : theme.palette.black
 }));
 
 export const TextBlockActions = styled(Box)(({ theme }) => ({
   marginTop: '44px', display: 'flex', alignItems: 'center',
   width: 'fit-content',
-  '&:hover *': {
-    textDecoration: 'underline'
-  }
+  '&:hover *': { textDecoration: 'underline' }
 }));
 
 
@@ -137,10 +138,10 @@ function Home() {
               {className === 'section1' && <Box sx={{position: 'absolute', width: 6, height: '100%', background: `linear-gradient(88deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`}}/>}
               <Box className='text-block-text'>
                 <TextBlockHeader variant='h1' invertColors={invertColors}>{header}</TextBlockHeader>
-                <TextBlockBody variant='body' component='p'>{body}</TextBlockBody>
+                <TextBlockBody variant='body' invertColors={invertColors} component='p'>{body}</TextBlockBody>
                 <TextBlockActions>
                   <Button variant='underlined' invertColors={invertColors}>{actionText}</Button>
-                  <Box sx={{'& g':{stroke: invertColors ? '#fff' : '#000'}, ml: '18px' }}><ArrowIcon/></Box>
+                  <Box sx={{'& g':{stroke: invertColors ? '#fff' : '#000'}, ml: '18px', display: 'flex' }}><ArrowIcon/></Box>
                 </TextBlockActions>
               </Box>
             </Box>
@@ -229,7 +230,7 @@ function Home() {
             <Stack key={title} sx={{alignItems: 'center',justifyContent:'flex-end'}}>
               <Box sx={{flexGrow: 1, display:'flex',alignItems:'center'}}>{icon()}</Box>
               <Typography variant='h3' sx={{mt: 6}}>{title}</Typography>
-              <Typography variant='body'>{content}</Typography>
+              <Typography variant='body' sx={{mt: 2}}>{content}</Typography>
             </Stack>
           )
         })}
