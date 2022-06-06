@@ -1,10 +1,14 @@
-import { Box, Typography, styled } from '@mui/material'
+import { Box, Typography, styled, Divider } from '@mui/material'
 import Button from 'components/Button/Button'
 import React from 'react'
 import theme from 'theme'
-import section1Bg from 'assets/home/desktop/create-and-share.jpg';
-import section2Bg from 'assets/home/desktop/beautiful-stories.jpg';
-import section3Bg from 'assets/home/desktop/designed-for-everyone.jpg'
+import createAndShare from 'assets/home/desktop/create-and-share.jpg';
+import beautifulStories from 'assets/home/desktop/beautiful-stories.jpg';
+import designedForEveryone from 'assets/home/desktop/designed-for-everyone.jpg'
+import theMountains from 'assets/stories/desktop/mountains.jpg'
+import sunsetCityscapes from 'assets/stories/desktop/cityscapes.jpg'
+import eighteenDaysVoyage from 'assets/stories/desktop/18-days-voyage.jpg'
+import architecturals from 'assets/stories/desktop/architecturals.jpg'
 import {ReactComponent as ArrowIcon} from 'assets/shared/desktop/arrow.svg';
 import './Home.css'
 
@@ -28,7 +32,6 @@ const ImageBlock = styled(Box)(({ theme }) => ({
   flexShrink: 1, 
   width: '50%', 
   overflow: 'hidden', 
-  maxWidth: 830
 }));
 
 const TextBlockHeader = styled(Typography,{
@@ -43,7 +46,11 @@ const TextBlockBody = styled(Typography)(({ theme }) => ({
 }));
 
 const TextBlockActions = styled(Box)(({ theme }) => ({
-  marginTop: '44px', display: 'flex', alignItems: 'center'
+  marginTop: '44px', display: 'flex', alignItems: 'center',
+  width: 'fit-content',
+  '&:hover *': {
+    textDecoration: 'underline'
+  }
 }));
 
 
@@ -54,7 +61,7 @@ const sections = [
     body: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
     actionText: 'Get an invite',
     invertColors: true,
-    image: section1Bg
+    image: createAndShare
   },
   {
     className: 'section2',
@@ -62,7 +69,7 @@ const sections = [
     body: 'We provide design templates to ensure your stories look terrific. Easily add photos, text, embed maps and media from other networks. Then share your story with everyone.',
     actionText: 'View the stories',
     invertColors: false,
-    image: section2Bg
+    image: beautifulStories
   },
   {
     className: 'section3',
@@ -70,30 +77,58 @@ const sections = [
     body: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
     actionText: 'View the stories',
     invertColors: false,
-    image: section3Bg
+    image: designedForEveryone
+  },
+]
+
+const stories = [
+  {
+    title: 'The Mountains',
+    author: 'John Appleseed',
+    image: theMountains
+  },
+  {
+    title: 'Sunset Cityscapes',
+    author: 'Benjamin Cruz',
+    image: sunsetCityscapes
+  },
+  {
+    title: '18 Days Voyage',
+    author: 'Alexei Borodin',
+    image: eighteenDaysVoyage
+  },
+  {
+    title: 'Architecturals',
+    author: 'Samantha Brooke',
+    image: architecturals
   },
 ]
 
 function Home() {
   return (
     <>
-      {sections.map(s => 
-        <Box className={s.className} key={s.className}>
-          <TextBlock invertColors={s.invertColors}>
+      {sections.map(section => {
+        const {className, header,body,actionText,invertColors,image} = section;
+        return (
+          <Box className={className} key={className}>
+          <TextBlock invertColors={invertColors}>
             <Box className='text-block'>
-              {s.className === 'section1' && <Box sx={{position: 'absolute', width: 6, height: '100%', background: theme.palette.gradient}}/>}
+              {className === 'section1' && <Box sx={{position: 'absolute', width: 6, height: '100%', background: `linear-gradient(88deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`}}/>}
               <Box className='text-block-text'>
-                <TextBlockHeader variant='h1' invertColors={s.invertColors}>{s.header}</TextBlockHeader>
-                <TextBlockBody variant='body' component='p'>{s.body}</TextBlockBody>
+                <TextBlockHeader variant='h1' invertColors={invertColors}>{header}</TextBlockHeader>
+                <TextBlockBody variant='body' component='p'>{body}</TextBlockBody>
                 <TextBlockActions>
-                  <Button variant='underlined' invertColors={s.invertColors}>{s.actionText}</Button>
-                  <Box sx={{'& g':{stroke: s.invertColors ? '#fff' : '#000'}, ml: '18px' }}><ArrowIcon/></Box>
+                  <Button variant='underlined' invertColors={invertColors}>{actionText}</Button>
+                  <Box sx={{'& g':{stroke: invertColors ? '#fff' : '#000'}, ml: '18px' }}><ArrowIcon/></Box>
                 </TextBlockActions>
               </Box>
             </Box>
           </TextBlock>
-          <ImageBlock component='img' src={s.image} alt="background image"/>
+          <ImageBlock component='img' src={image} alt="background image"/>
         </Box>
+        )
+      }
+        
       )}
         
       <Box 
@@ -103,7 +138,61 @@ function Home() {
         }}
         className='section4'
       >
-
+        {stories.map(story => {
+          const {title,author,image} = story;
+          return (
+            <Box
+              sx={{ 
+                height: '100%', 
+                flexShrink: 1, flexGrow: 1, display: 'flex', 
+                position: 'relative',
+                transition: 'transform 0.4s cubic-bezier(.23,.09,.33,.88)',
+                '&:hover': {
+                  transform: 'translateY(-24px)',
+                },
+                '&:hover .hover-border': {
+                  background: `linear-gradient(1deg, ${theme.palette.a1} 25%, ${theme.palette.a2} 50%, ${theme.palette.a3} 75%)`,
+                  height: 6
+                }
+              }}
+              key={title}
+            >
+              <Box component='img' src={image} alt={title} sx={{position: 'absolute', objectFit: 'cover',  width: '100%', height: '100%'}}/>
+              <Box 
+                sx={{
+                  position: 'absolute', 
+                  bottom: 0, 
+                  height: 350, 
+                  width: '100%', 
+                  background: `linear-gradient(${theme.palette.gradientBW})`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  p: 5,
+                  '& *': {
+                    color: theme.palette.white,
+                    stroke: theme.palette.white,
+                  },
+                }}
+              >
+                <Typography variant='h3'>{title}</Typography>
+                <Typography sx={{fontSize: 13, mt: '4px'}}>by {author}</Typography>
+                <Divider sx={{mt: 2, borderColor: theme.palette.white, opacity: 0.25}}/>
+                <Box sx={{display: 'flex', justifyContent: 'space-between',mt: 2.5}}>
+                  <Typography variant='h4' sx={{textTransform: 'uppercase'}}>Read Story</Typography>
+                  <ArrowIcon/>
+                </Box>
+              </Box>
+              <Box className='hover-border'
+                sx={{
+                  position: 'absolute',
+                  bottom: 0,
+                  width: '100%',
+                }}
+              />
+            </Box>
+          )
+        })}
       </Box>
      
 

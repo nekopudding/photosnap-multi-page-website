@@ -1,10 +1,10 @@
 import { createTheme } from "@mui/material";
 
 const _ = {
-  white: 'hsl(0,0%,100%)',
-  grey: 'hsl(0,0%,87%)',
+  white: '#fff',
+  grey: '#dfdfdf',
   darkgrey: '#979797',
-  black: 'hsl(0,0%,0%)',
+  black: '#000',
 
   a1: 'hsl(28,100%,79%)',
   a2: 'hsl(329,36%,59%)',
@@ -24,7 +24,8 @@ const theme = createTheme({
   },
   palette: {
     ..._,
-    gradient: `linear-gradient(0deg, ${_.a1} 0%, ${_.a2} 50%, ${_.a3} 100%)`,
+    gradientBW: `rgba(0,0,0,0.0001) 0%, rgba(0,0,0,0.6612) 100%`,
+    gradient: `${_.a1} 0%, ${_.a2} 50%, ${_.a3} 100%`,
     background: {
       default: _.white,
     },
