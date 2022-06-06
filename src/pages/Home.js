@@ -1,9 +1,18 @@
+import { Box, Typography } from '@mui/material'
+import Button from 'components/Button'
 import React from 'react'
+import theme from 'theme'
 
 function Home() {
   return (
     <>
-    <h1>Home</h1>
+    <Typography variant='h2'>DM SANS BOLD</Typography>
+    <Button variant='contained'>Button 2</Button>
+    <Button variant='text'>Button 2</Button>
+    <Box sx={{bgcolor: theme.palette.black, p:4,m:2}}>
+      <Button variant='contained' invertColors>Button 3</Button>
+      <Button variant='text' invertColors>Button 4</Button>
+    </Box>
       Stories
       Features
       Pricing

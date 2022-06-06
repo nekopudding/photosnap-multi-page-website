@@ -1,24 +1,28 @@
+
 import { createTheme } from "@mui/material";
 
 const _ = {
-  clr500: 'hsl(212, 24%, 26%)',
-  clr400:'hsl(211, 10%, 45%)',
-  clr300:'hsl(223, 19%, 93%)',
-  clr200:'hsl(228, 33%, 97%)',
-  clr100:'hsl(0, 0%, 100%)',
-  primary: {
-    main: 'hsl(238, 40%, 52%)',
-    light: 'hsl(239, 57%, 85%)'
-  },
-  secondary: {
-    main: 'hsl(358, 79%, 66%)',
-    light: 'hsl(357, 100%, 86%)'
-  },
+  white: 'hsl(0,0%,100%)',
+  grey: 'hsl(0,0%,87%)',
+  black: 'hsl(0,0%,0%)',
+
+  a1: 'hsl(28,100%,79%)',
+  a2: 'hsl(329,36%,59%)',
+  a3: 'hsl(229,100%,67%)'
+}
+const buttonOverride = {
+  backgroundColor: 'transparent',
+  '&:hover': {
+    textDecoration: 'underline',
+    backgroundColor: 'inherit',
+  }
 }
 
+// @ts-nocheck @ts-ignore
 const theme = createTheme({
   breakpoints: {
     values: {
+      // @ts-ignore
       mobile: 0,
       tablet: 768,
       laptop: 1024,
@@ -28,56 +32,45 @@ const theme = createTheme({
   palette: {
     ..._,
     background: {
-      default: _.clr200,
-      paper: _.clr100
+      default: _.white,
     },
   },
   typography: {
-    fontFamily: "Rubik",
+    fontFamily: "DM Sans",
     fontWeight: 400,
-    color: _.clr500,
+    color: _.black,
 
-    body: {
-      fontSize: "16px",
-      color: _.clr400,
-      lineHeight: 1.5
+    h1: {
+      fontWeight: 700,
+      fontSize: '40px',
+      lineHeight: '48px',
+      letterSpacing: 4.17,
     },
-    deleted: {
-      fontSize: "16px",
-      color: _.clr400,
-      lineHeight: 1.5,
-      fontStyle: 'italic',
-    },
-    scoreText: {
-      fontSize: "16px",
-      color: _.primary.main,
-      fontWeight: 500
-    },
-    username: {
-      fontWeight: 500,
-      fontSize: '16px',
-      color: _.clr500
-    },
-    you: {
-      fontSize: '12px',
-      fontWeight: 500,
-      color: _.clr100
-    },
-    primaryAction: {
-      fontSize: '16px',
-      fontWeight: 500,
-      color: _.primary.main,
-    },
-    secondaryAction: {
-      fontSize: '16px',
-      fontWeight: 500,
-      color: _.secondary.main,
-    },
-    dialogHeader: {
+    h2: {
+      fontWeight: 700,
       fontSize: '24px',
-      fontWeight: 500,
+      lineHeight: '25px',
+      letterSpacing: 0,
+    },
+    h3: {
+      fontWeight: 700,
+      fontSize: '18px',
+      lineHeight: '25px',
+      letterSpacing: 0,
+    },
+    h4: {
+      fontWeight: 700,
+      fontSize: '12px',
+      lineHeight: '16px',
+      letterSpacing: 2,
+    },
+    body: {
+      fontWeight: 400,
+      fontSize: '15px',
+      lineHeight: '25px',
+      letterSpacing: 0,
     }
-  }
+  },
 })
 
 
