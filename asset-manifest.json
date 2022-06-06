@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/photosnap-multi-page-website/static/css/main.275ae289.css",
-    "main.js": "/photosnap-multi-page-website/static/js/main.58bf71f5.js",
+    "main.js": "/photosnap-multi-page-website/static/js/main.fe2fb289.js",
     "static/js/787.f82a9365.chunk.js": "/photosnap-multi-page-website/static/js/787.f82a9365.chunk.js",
     "static/media/beautiful-stories.jpg": "/photosnap-multi-page-website/static/media/beautiful-stories.c53d42bed55e892d6a5e.jpg",
     "static/media/cityscapes.jpg": "/photosnap-multi-page-website/static/media/cityscapes.f5cf644be0371b9b30ec.jpg",
@@ -22,11 +22,11 @@
     "static/media/facebook.svg": "/photosnap-multi-page-website/static/media/facebook.2ba8a7084e017d7aab0a595e23659027.svg",
     "static/media/arrow.svg": "/photosnap-multi-page-website/static/media/arrow.7468e8d9eebae363e48d680154ab526f.svg",
     "main.275ae289.css.map": "/photosnap-multi-page-website/static/css/main.275ae289.css.map",
-    "main.58bf71f5.js.map": "/photosnap-multi-page-website/static/js/main.58bf71f5.js.map",
+    "main.fe2fb289.js.map": "/photosnap-multi-page-website/static/js/main.fe2fb289.js.map",
     "787.f82a9365.chunk.js.map": "/photosnap-multi-page-website/static/js/787.f82a9365.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.275ae289.css",
-    "static/js/main.58bf71f5.js"
+    "static/js/main.fe2fb289.js"
   ]
 }
