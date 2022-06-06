@@ -6,15 +6,12 @@ import Features from 'pages/Features';
 import Pricing from 'pages/Pricing';
 import Stories from 'pages/Stories';
 import {
-  HashRouter,
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from 'theme';
-import PageNotFound from 'pages/PageNotFound';
 
 function App(props: any) {
   return (
@@ -29,8 +26,6 @@ function App(props: any) {
             <Route path="features" element={<Features />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="stories" element={<Stories />} />
-            <Route path='404' element={<PageNotFound/>} />
-            <Route path='*' element={<Navigate replace to='404'/>} />
           </Route>
         </Routes>
         <Footer/>
