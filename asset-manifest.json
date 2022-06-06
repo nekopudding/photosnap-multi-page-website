@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/photosnap-multi-page-website/static/css/main.275ae289.css",
+    "main.js": "/photosnap-multi-page-website/static/js/main.39f58c51.js",
+    "static/js/787.f82a9365.chunk.js": "/photosnap-multi-page-website/static/js/787.f82a9365.chunk.js",
+    "static/media/beautiful-stories.jpg": "/photosnap-multi-page-website/static/media/beautiful-stories.c53d42bed55e892d6a5e.jpg",
+    "static/media/cityscapes.jpg": "/photosnap-multi-page-website/static/media/cityscapes.f5cf644be0371b9b30ec.jpg",
+    "static/media/architecturals.jpg": "/photosnap-multi-page-website/static/media/architecturals.95169c95322c9abee52c.jpg",
+    "static/media/create-and-share.jpg": "/photosnap-multi-page-website/static/media/create-and-share.c29005174086ae245269.jpg",
+    "static/media/designed-for-everyone.jpg": "/photosnap-multi-page-website/static/media/designed-for-everyone.70f5fa4ce85f33d59a05.jpg",
+    "static/media/mountains.jpg": "/photosnap-multi-page-website/static/media/mountains.2540b7134e21a24db4a5.jpg",
+    "static/media/18-days-voyage.jpg": "/photosnap-multi-page-website/static/media/18-days-voyage.293feb724d851091d02f.jpg",
+    "static/media/logo.svg": "/photosnap-multi-page-website/static/media/logo.8675b031b29df6fff1bb894c11b7aec0.svg",
+    "static/media/embed.svg": "/photosnap-multi-page-website/static/media/embed.78c81ce39eed44ef9f71cec054aa5c06.svg",
+    "static/media/no-limit.svg": "/photosnap-multi-page-website/static/media/no-limit.b8deb4d29340cc57f1a1b86bd7a08cc9.svg",
+    "static/media/responsive.svg": "/photosnap-multi-page-website/static/media/responsive.d5fd70c1af8c4b7303ade262961b1309.svg",
+    "static/media/instagram.svg": "/photosnap-multi-page-website/static/media/instagram.f1055128c37c2e88fff38595680feb2a.svg",
+    "static/media/pinterest.svg": "/photosnap-multi-page-website/static/media/pinterest.4aba65bd9937dc07883a593a085cbe7b.svg",
+    "index.html": "/photosnap-multi-page-website/index.html",
+    "static/media/twitter.svg": "/photosnap-multi-page-website/static/media/twitter.f7273843e53cbee9e6d8b92e31a11b78.svg",
+    "static/media/youtube.svg": "/photosnap-multi-page-website/static/media/youtube.1ca38f71b40f95fa105f77eae5fdb873.svg",
+    "static/media/facebook.svg": "/photosnap-multi-page-website/static/media/facebook.2ba8a7084e017d7aab0a595e23659027.svg",
+    "static/media/arrow.svg": "/photosnap-multi-page-website/static/media/arrow.7468e8d9eebae363e48d680154ab526f.svg",
+    "main.275ae289.css.map": "/photosnap-multi-page-website/static/css/main.275ae289.css.map",
+    "main.39f58c51.js.map": "/photosnap-multi-page-website/static/js/main.39f58c51.js.map",
+    "787.f82a9365.chunk.js.map": "/photosnap-multi-page-website/static/js/787.f82a9365.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.275ae289.css",
+    "static/js/main.39f58c51.js"
+  ]
+}
