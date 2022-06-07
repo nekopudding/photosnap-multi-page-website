@@ -24,7 +24,7 @@ function Header() {
   return (
     <>
       <AppBar position="fixed" sx={{bgcolor: theme.palette.white, boxShadow: 'none'}}>
-        <Toolbar disableGutters sx={{height: 72, px: '165px'}}>
+        <Toolbar disableGutters sx={{height: 72, px: {laptop: '165px', tablet: 5, mobile: 3} }}>
           <Logo/>
           <Box 
             sx={{ 

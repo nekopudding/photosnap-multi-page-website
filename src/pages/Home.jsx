@@ -18,7 +18,6 @@ import './Home.css'
 const TextBlock = styled(Box,{
   shouldForwardProp: (prop)=> prop !== 'invertColors',
 })(({ invertColors, theme }) => ({
-  minWidth: 610,
   height: '100%',
   backgroundColor: invertColors ? theme.palette.black : theme.palette.white,
   display: 'flex',
@@ -133,7 +132,7 @@ function Home() {
         const {className, header,body,actionText,invertColors,image} = section;
         return (
           <Box className={className} key={className}>
-          <TextBlock invertColors={invertColors}>
+          <TextBlock invertColors={invertColors} sx={{minWidth: {laptop: '610px', tablet: '495px', mobile: 'auto'},}}>
             <Box className='text-block'>
               {className === 'section1' && <Box sx={{position: 'absolute', width: 6, height: '100%', background: `linear-gradient(88deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`}}/>}
               <Box className='text-block-text'>
@@ -154,9 +153,8 @@ function Home() {
       )}
         
       <Box 
+        display="grid" gridTemplateColumns="repeat(12, 1fr)"
         sx={{
-          height: 500,
-          display: 'flex',
         }}
         className='section4'
       >
@@ -165,8 +163,9 @@ function Home() {
           return (
             <Box
               sx={{ 
-                height: '100%', 
-                flexShrink: 1, flexGrow: 1, display: 'flex', 
+                gridColumn: {laptop: 'span 3', tablet: 'span 6', mobile: 'span 12'},
+                height: 500, 
+                flexGrow: 1, display: 'flex', 
                 position: 'relative',
                 transition: 'transform 0.4s cubic-bezier(.23,.09,.33,.88)',
                 '&:hover': {
@@ -217,11 +216,24 @@ function Home() {
         })}
       </Box>
       <Box sx={{
-        my: '120px',
-        mx: '165px',
         display: 'flex',
-        '& > * + *': {
-          ml: '30px'
+        my: '120px',
+        
+        [theme.breakpoints.up('laptop')]: {
+            mx: '165px',
+          '& > * + *': {
+            ml: '30px'
+          },
+        },
+        [theme.breakpoints.down('laptop')]: {
+          flexDirection: 'column',
+          '& > *': {
+            width: 457,
+            mx: 'auto',
+          },
+          '& > * + *': {
+            mt: 10
+          },
         }
       }}>
         {features.map(feature => {

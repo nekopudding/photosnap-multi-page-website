@@ -1,6 +1,6 @@
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Home from 'pages/Home';
 import Features from 'pages/Features';
 import Pricing from 'pages/Pricing';
@@ -13,7 +13,15 @@ import {
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from 'theme';
 
-function App(props: any) {
+function App(props) {
+  const [windowW,setWindowW] = useState(window.innerWidth);
+
+  useEffect(()=> {
+    window.addEventListener('resize', () => {
+      setWindowW(window.innerWidth);
+    })
+  },[])
+
   return (
     <>
     <BrowserRouter>
@@ -28,7 +36,7 @@ function App(props: any) {
             <Route path="stories" element={<Stories />} />
           </Route>
         </Routes>
-        <Footer/>
+        <Footer windowW={windowW}/>
     </ThemeProvider>
     </BrowserRouter>
     </>

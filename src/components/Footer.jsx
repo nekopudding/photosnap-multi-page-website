@@ -38,14 +38,23 @@ const pages = [
 ]
 const baseRoute = 'photosnap-multi-page-website'
 
-function Footer() {
+function Footer(props) {
+  const {windowW} = props;
+  
   return (
     <>
-    <Box sx={{height: 250, display: 'flex', alignItems: 'center', bgcolor: theme.palette.black}}>
-      <Box sx={{display: 'flex', height: 122, flexGrow: 1, mx: '171px'}}>
-        <Stack sx={{justifyContent: 'space-between', '& .logo-white path:first-of-type': {fill: theme.palette.white} }}>
-          <Logo className='logo-white'/>
-          <Box sx={{width: 154, display:'flex', justifyContent: 'space-between'}}>
+    <Box sx={{py: {tablet: 8}, px: {laptop: '171px', mobile: 5}, display: 'flex', alignItems: 'center', bgcolor: theme.palette.black}}>
+      <Box sx={{display: 'flex', height: {mobile: 156, laptop: 122}, flexGrow: 1}}>
+        <Stack sx={{'& .logo-white path:first-of-type': {fill: theme.palette.white} }}>
+          <Box sx={{flexGrow: {laptop: 1, mobile: 0}}}><Logo className='logo-white'/></Box>
+          {windowW <= theme.breakpoints.values.laptop && 
+            <Box sx={{mt: 4, flexGrow: 1, '& > * + *': {ml: '26px'} }}>
+              {pages.map(({name,to}) => 
+                <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
+              )}
+            </Box>
+            }
+          <Box sx={{width: 154, display:'flex', justifyContent: 'space-between', mt: 9}}>
             {icons.map(icon => 
             <React.Fragment key={icon.toString()}>
               <Box sx={{
@@ -59,11 +68,15 @@ function Footer() {
             </React.Fragment>)}
           </Box>
         </Stack>
-        <Stack sx={{ml: '109px', flexGrow: 1, justifyContent: 'space-between'}}>
-          {pages.map(({name,to}) => 
-            <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
-          )}
-        </Stack>
+        {windowW > theme.breakpoints.values.laptop &&
+          <Stack sx={{ml: '109px', justifyContent: 'space-between'}}>
+            {pages.map(({name,to}) => 
+              <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
+            )}
+          </Stack>
+        }
+        <Box sx={{flexGrow: 1}}/>
+        
         <Stack sx={{justifyContent: 'space-between'}}>
           <Box sx={{display: 'flex',alignItems: 'center', '&:hover *': { textDecoration: 'underline' }}}>
             <Button variant='underlined' invertColors>Get an invite</Button>
