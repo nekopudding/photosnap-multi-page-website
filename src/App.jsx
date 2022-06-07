@@ -27,7 +27,7 @@ function App(props) {
     <BrowserRouter>
     <ThemeProvider theme={theme}>
       <CssBaseline/>
-      <Header/>
+      <Header windowW={windowW}/>
         <Routes>
           <Route path="photosnap-multi-page-website">
             <Route index element={<Home />} />

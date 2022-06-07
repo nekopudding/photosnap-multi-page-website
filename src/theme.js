@@ -65,6 +65,12 @@ const theme = createTheme({
       lineHeight: '25px',
       letterSpacing: 0,
       opacity: 0.6
+    },
+    mobileLinks: {
+      fontWeight: 700,
+      fontSize: '15px',
+      lineHeight: '20px',
+      letterSpacing: 2.5,
     }
   },
 })

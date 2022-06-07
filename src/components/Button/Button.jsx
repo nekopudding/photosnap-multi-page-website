@@ -3,14 +3,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import {ContainedButton, TextButton,UnderlinedButton} from  './Button.styles'
 
-const Button: React.FC<{
-  children: string, 
-  variant: string, 
-  to: string, 
-  link: boolean, 
-  invertColors: boolean
-}> = (props) => {
-  const {children,variant,to, link} = props;
+const Button = (props) => {
+  const {children,variant,to, link,typography} = props;
   return (
     <>
     {(variant === 'contained') &&
@@ -40,10 +34,10 @@ const Button: React.FC<{
       <TextButton {...props}>
         {link ? 
           <Link to={to}>
-            <Typography variant='h4' children={children}/>
+            <Typography variant={typography} children={children}/>
           </Link>
           :
-          <Typography variant='h4' children={children}/>
+          <Typography variant={typography} children={children}/>
         }
       </TextButton>
 
@@ -57,7 +51,8 @@ Button.defaultProps = {
   to: '/',
   variant: 'contained',
   link: false,
-  invertColors: false
+  invertColors: false,
+  typography: 'h4'
 }
 
 export default Button;

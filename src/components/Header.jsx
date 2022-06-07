@@ -1,8 +1,11 @@
-import { AppBar, Toolbar,Container,Box,IconButton, Typography, } from '@mui/material'
+import { AppBar, Toolbar,Container,Box,IconButton, Typography, Modal, Stack, Divider } from '@mui/material'
 import {ReactComponent as Logo } from 'assets/shared/desktop/logo.svg'
-import React from 'react'
+import React, {useState} from 'react'
 import theme from 'theme'
 import Button from './Button/Button'
+import {ReactComponent as MenuIcon} from 'assets/shared/mobile/menu.svg'
+import {ReactComponent as CloseIcon} from 'assets/shared/mobile/close.svg'
+
 
 const pages = [
   {
@@ -20,7 +23,11 @@ const pages = [
 ]
 const baseRoute = 'photosnap-multi-page-website'
 
-function Header() {
+function Header(props) {
+  const {windowW} = props;
+
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <AppBar position="fixed" sx={{bgcolor: theme.palette.white, boxShadow: 'none'}}>
@@ -28,7 +35,7 @@ function Header() {
           <Logo/>
           <Box 
             sx={{ 
-              display: 'flex', 
+              display: {tablet: 'flex', mobile: 'none'}, 
               textTransform: 'uppercase', 
               mx: 'auto', 
               '& > * + *': {
@@ -42,12 +49,35 @@ function Header() {
               </Button>
             ))}
           </Box>
-          <Box>
-            <Button variant='contained'>Get an Invite</Button>
+          <Box sx={{ml: 'auto'}}>
+            {windowW > theme.breakpoints.values.tablet ? 
+              <Button variant='contained'>Get an Invite</Button>
+              :
+              <IconButton sx={{borderRadius: 0, width: 36, height: 36, '&:hover': {bgcolor: 'transparent'}}} onClick={()=>setOpen(!open)}>
+                {open ? <CloseIcon/> :<MenuIcon/>}
+              </IconButton>
+            }
           </Box>
         </Toolbar>
+        <Modal
+          open={open}
+          aria-labelledby="modal-menu"
+          aria-describedby="header menu"
+          sx={{zIndex: 1000}}
+        >
+          <Stack sx={{p:4, textAlign: 'center', '& > *+*': {mt: '20px !important'},position: 'absolute', top: 72, width: '100%',bgcolor: theme.palette.white}}>
+            {pages.map(({name,to}) => (
+              <Button key={name} variant='text' link to={baseRoute + to} typography='mobileLinks' onClick={()=>setOpen(false)}>
+                {name}
+              </Button>
+            ))}
+            <Divider sx={{borderColor: theme.palette.black, opacity: 0.25}}/>
+            <Button variant='contained' sx={{width: 'auto'}} onClick={()=>setOpen(false)}>Get an Invite</Button>
+          </Stack>
+        </Modal>
     </AppBar>
     <Box sx={{height: 72}}/>
+    
     </>
   )
 }
