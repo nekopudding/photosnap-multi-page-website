@@ -1,5 +1,4 @@
 import { Box, Typography, styled, Divider, Stack } from '@mui/material'
-import Button from 'components/Button/Button'
 import React from 'react'
 import theme from 'theme'
 import createAndShare from 'assets/home/desktop/create-and-share.jpg';
@@ -14,6 +13,7 @@ import {ReactComponent as Responsive} from 'assets/features/desktop/responsive.s
 import {ReactComponent as NoLimit} from 'assets/features/desktop/no-limit.svg';
 import {ReactComponent as Embed} from 'assets/features/desktop/embed.svg';
 import './Home.css'
+import ArrowButton from 'components/Button/ArrowButton';
 
 const TextBlock = styled(Box,{
   shouldForwardProp: (prop)=> prop !== 'invertColors',
@@ -55,15 +55,6 @@ const TextBlockBody = styled(Typography,{
   color: invertColors ? theme.palette.white : theme.palette.black,
   [theme.breakpoints.down('tablet')]: {
     marginTop: '16px'
-  }
-}));
-
-export const TextBlockActions = styled(Box)(({ theme }) => ({
-  marginTop: '44px', display: 'flex', alignItems: 'center',
-  width: 'fit-content',
-  '&:hover *': { textDecoration: 'underline' },
-  [theme.breakpoints.down('tablet')]: {
-    marginTop: '24px'
   }
 }));
 
@@ -172,15 +163,10 @@ function Home() {
                 }
               }}>
                 <TextBlockHeader variant='h1' invertColors={invertColors} sx={{
-                  fontSize: {tablet: '40px', mobile: '32px'},
-                  lineHeight: {tablet: '48px', mobile: '40px'},
-                  letterSpacing: {tablet: 4.17, mobile: 3.33},
+                  [theme.breakpoints.down('tablet')]: theme.typography.mobileH1
                 }}>{header}</TextBlockHeader>
                 <TextBlockBody variant='body' invertColors={invertColors} component='p'>{body}</TextBlockBody>
-                <TextBlockActions>
-                  <Button variant='underlined' invertColors={invertColors}>{actionText}</Button>
-                  <Box sx={{'& g':{stroke: invertColors ? '#fff' : '#000'}, ml: '18px', display: 'flex' }}><ArrowIcon/></Box>
-                </TextBlockActions>
+                <ArrowButton invertColors={invertColors} sx={{mt:{tablet: 5.5, mobile: 3}}}>{actionText}</ArrowButton>
               </Box>
             </Box>
           </TextBlock>

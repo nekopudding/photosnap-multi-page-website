@@ -10,6 +10,7 @@ import {ReactComponent as Instagram } from 'assets/shared/desktop/instagram.svg'
 import {ReactComponent as ArrowIcon} from 'assets/shared/desktop/arrow.svg';
 
 import Button from './Button/Button'
+import ArrowButton from './Button/ArrowButton'
 
 const icons = [
   () => <Facebook/>,
@@ -78,7 +79,7 @@ function Footer(props) {
           }
           <Box sx={{flexGrow: 1}}/>
           
-          <Stack sx={{justifyContent: 'space-between'}}>
+          <Stack sx={{justifyContent: 'space-between', alignItems: 'end'}}>
             <Box sx={{display: 'flex',alignItems: 'center', '&:hover *': { textDecoration: 'underline' }}}>
               <Button variant='underlined' invertColors>Get an invite</Button>
               <Box sx={{'& g':{stroke: '#fff' }, ml: '18px', display: 'flex', alignItems: 'center' }}><ArrowIcon/></Box>
@@ -110,10 +111,7 @@ function Footer(props) {
             <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
           )}
         </Stack>      
-        <Box sx={{mt: 15, display: 'flex',alignItems: 'center', '&:hover *': { textDecoration: 'underline' }}}>
-          <Button variant='underlined' invertColors>Get an invite</Button>
-          <Box sx={{'& g':{stroke: '#fff' }, ml: '18px', display: 'flex', alignItems: 'center' }}><ArrowIcon/></Box>
-        </Box>
+        <ArrowButton sx={{mt: 15}} invertColors>Get an Invite</ArrowButton>
         <Typography sx={{mt: 4.25, color: theme.palette.grey, opacity: 0.525}}>Copyright 2022. All Rights Reserved</Typography>
       </Stack>
     }

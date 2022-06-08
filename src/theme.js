@@ -71,6 +71,11 @@ const theme = createTheme({
       fontSize: '15px',
       lineHeight: '20px',
       letterSpacing: 2.5,
+    },
+    mobileH1: {
+      fontSize: '32px',
+      lineHeight: '40px',
+      letterSpacing: 3.33,
     }
   },
 })
