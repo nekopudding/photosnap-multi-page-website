@@ -43,50 +43,80 @@ function Footer(props) {
   
   return (
     <>
-    <Box sx={{py: {tablet: 8}, px: {laptop: '171px', mobile: 5}, display: 'flex', alignItems: 'center', bgcolor: theme.palette.black}}>
-      <Box sx={{display: 'flex', height: {mobile: 156, laptop: 122}, flexGrow: 1}}>
-        <Stack sx={{'& .logo-white path:first-of-type': {fill: theme.palette.white} }}>
-          <Box sx={{flexGrow: {laptop: 1, mobile: 0}}}><Logo className='logo-white'/></Box>
-          {windowW <= theme.breakpoints.values.laptop && 
-            <Box sx={{mt: 4, flexGrow: 1, '& > * + *': {ml: '26px'} }}>
+    {windowW > theme.breakpoints.values.tablet &&
+      <Box sx={{py: {tablet: 8}, px: {laptop: '171px', tablet: 5, mobile:4}, display: 'flex', alignItems: 'center', bgcolor: theme.palette.black}}>
+        <Box sx={{display: 'flex', height: {tablet: 156, laptop: 122}, flexGrow: 1}}>
+          <Stack sx={{'& .logo-white path:first-of-type': {fill: theme.palette.white} }}>
+            <Box sx={{flexGrow: {laptop: 1, tablet: 0}}}><Logo className='logo-white'/></Box>
+            {windowW <= theme.breakpoints.values.laptop && 
+              <Box sx={{mt: 4, flexGrow: 1, '& > * + *': {ml: '26px'} }}>
+                {pages.map(({name,to}) => 
+                  <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
+                )}
+              </Box>
+              }
+            <Box sx={{width: 154, display:'flex', justifyContent: 'space-between', mt: 9}}>
+              {icons.map(icon => 
+              <React.Fragment key={icon.toString()}>
+                <Box sx={{
+                  display: 'flex', alignItems:'center',
+                  '&:not(:hover) path': {
+                    fill: theme.palette.white
+                  },
+                }}>
+                  {icon()}
+                </Box>  
+              </React.Fragment>)}
+            </Box>
+          </Stack>
+          {windowW > theme.breakpoints.values.laptop &&
+            <Stack sx={{ml: '109px', justifyContent: 'space-between'}}>
               {pages.map(({name,to}) => 
                 <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
               )}
+            </Stack>
+          }
+          <Box sx={{flexGrow: 1}}/>
+          
+          <Stack sx={{justifyContent: 'space-between'}}>
+            <Box sx={{display: 'flex',alignItems: 'center', '&:hover *': { textDecoration: 'underline' }}}>
+              <Button variant='underlined' invertColors>Get an invite</Button>
+              <Box sx={{'& g':{stroke: '#fff' }, ml: '18px', display: 'flex', alignItems: 'center' }}><ArrowIcon/></Box>
             </Box>
-            }
-          <Box sx={{width: 154, display:'flex', justifyContent: 'space-between', mt: 9}}>
-            {icons.map(icon => 
-            <React.Fragment key={icon.toString()}>
-              <Box sx={{
-                display: 'flex', alignItems:'center',
-                '&:not(:hover) path': {
-                  fill: theme.palette.white
-                },
-              }}>
-                {icon()}
-              </Box>  
-            </React.Fragment>)}
-          </Box>
-        </Stack>
-        {windowW > theme.breakpoints.values.laptop &&
-          <Stack sx={{ml: '109px', justifyContent: 'space-between'}}>
-            {pages.map(({name,to}) => 
-              <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
-            )}
+            <Typography sx={{color: theme.palette.grey, opacity: 0.525}}>Copyright 2022. All Rights Reserved</Typography>
           </Stack>
-        }
-        <Box sx={{flexGrow: 1}}/>
-        
-        <Stack sx={{justifyContent: 'space-between'}}>
-          <Box sx={{display: 'flex',alignItems: 'center', '&:hover *': { textDecoration: 'underline' }}}>
-            <Button variant='underlined' invertColors>Get an invite</Button>
-            <Box sx={{'& g':{stroke: '#fff' }, ml: '18px', display: 'flex', alignItems: 'center' }}><ArrowIcon/></Box>
-          </Box>
-          <Typography sx={{color: theme.palette.grey, opacity: 0.525}}>Copyright 2022. All Rights Reserved</Typography>
-        </Stack>
-
+        </Box>
       </Box>
-    </Box>
+    }
+    
+    {windowW <= theme.breakpoints.values.tablet &&
+      <Stack sx={{py: 7, px: 4, alignItems: 'center', bgcolor: theme.palette.black}}>
+        <Box sx={{flexGrow: {laptop: 1, tablet: 0},'& .logo-white path:first-of-type': {fill: theme.palette.white}}}><Logo className='logo-white'/></Box>
+        <Box sx={{mt: 4, width: 154, display:'flex', justifyContent: 'space-between'}}>
+          {icons.map(icon => 
+          <React.Fragment key={icon.toString()}>
+            <Box sx={{
+              display: 'flex', alignItems:'center',
+              '&:not(:hover) path': {
+                fill: theme.palette.white
+              },
+            }}>
+              {icon()}
+            </Box>  
+          </React.Fragment>)}
+        </Box>
+        <Stack sx={{mt: 6, alignItems:'center'}} spacing={2.5}>
+          {pages.map(({name,to}) => 
+            <Button variant='text' invertColors key={name} link to={baseRoute + to}>{name}</Button>
+          )}
+        </Stack>      
+        <Box sx={{mt: 15, display: 'flex',alignItems: 'center', '&:hover *': { textDecoration: 'underline' }}}>
+          <Button variant='underlined' invertColors>Get an invite</Button>
+          <Box sx={{'& g':{stroke: '#fff' }, ml: '18px', display: 'flex', alignItems: 'center' }}><ArrowIcon/></Box>
+        </Box>
+        <Typography sx={{mt: 4.25, color: theme.palette.grey, opacity: 0.525}}>Copyright 2022. All Rights Reserved</Typography>
+      </Stack>
+    }
     </>
   )
 }

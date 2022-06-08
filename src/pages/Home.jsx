@@ -34,6 +34,11 @@ const ImageBlock = styled(Box)(({ theme }) => ({
   flexShrink: 1, 
   width: '50%', 
   overflow: 'hidden', 
+  [theme.breakpoints.down('tablet')]: {
+    width: '100%',
+    height: '271px',
+    flexBasis:'auto'
+  }
 }));
 
 const TextBlockHeader = styled(Typography,{
@@ -47,13 +52,19 @@ const TextBlockBody = styled(Typography,{
   shouldForwardProp: (prop)=> prop !== 'invertColors',
 })(({ invertColors, theme }) => ({
   marginTop: '21px',
-  color: invertColors ? theme.palette.white : theme.palette.black
+  color: invertColors ? theme.palette.white : theme.palette.black,
+  [theme.breakpoints.down('tablet')]: {
+    marginTop: '16px'
+  }
 }));
 
 export const TextBlockActions = styled(Box)(({ theme }) => ({
   marginTop: '44px', display: 'flex', alignItems: 'center',
   width: 'fit-content',
-  '&:hover *': { textDecoration: 'underline' }
+  '&:hover *': { textDecoration: 'underline' },
+  [theme.breakpoints.down('tablet')]: {
+    marginTop: '24px'
+  }
 }));
 
 
@@ -131,12 +142,40 @@ function Home() {
       {sections.map(section => {
         const {className, header,body,actionText,invertColors,image} = section;
         return (
-          <Box className={className} key={className}>
-          <TextBlock invertColors={invertColors} sx={{minWidth: {laptop: '610px', tablet: '495px', mobile: 'auto'},}}>
-            <Box className='text-block'>
-              {className === 'section1' && <Box sx={{position: 'absolute', width: 6, height: '100%', background: `linear-gradient(88deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`}}/>}
-              <Box className='text-block-text'>
-                <TextBlockHeader variant='h1' invertColors={invertColors}>{header}</TextBlockHeader>
+          <Box className={className} key={className} sx={{ [theme.breakpoints.down('tablet')]: {height: 'auto', flexDirection: 'column-reverse'} }}>
+          <TextBlock invertColors={invertColors} 
+            sx={{
+              minWidth: {laptop: '610px', tablet: '495px', mobile: 'auto'},
+              position: 'relative'
+            }}>
+            <Box className='text-block' sx={{position: {tablet: 'relative',mobile: 'static'}}}>
+              {className === 'section1' && 
+                <Box sx={{
+                  position: 'absolute', width: 6, height: '100%', 
+                  background: `linear-gradient(88deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`,
+                  [theme.breakpoints.down('tablet')]:{
+                    top: 0,
+                    height: 6,
+                    width: 128,
+                    ml: '33px',
+                    background: `linear-gradient(3deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`,
+                  }
+                }}/>
+              }
+              <Box className='text-block-text' sx={{
+                [theme.breakpoints.down('tablet')]: {
+                  width: 'auto',
+                  height: 'auto',
+                  ml: '33px',
+                  mr: '24px',
+                  my: 9
+                }
+              }}>
+                <TextBlockHeader variant='h1' invertColors={invertColors} sx={{
+                  fontSize: {tablet: '40px', mobile: '32px'},
+                  lineHeight: {tablet: '48px', mobile: '40px'},
+                  letterSpacing: {tablet: 4.17, mobile: 3.33},
+                }}>{header}</TextBlockHeader>
                 <TextBlockBody variant='body' invertColors={invertColors} component='p'>{body}</TextBlockBody>
                 <TextBlockActions>
                   <Button variant='underlined' invertColors={invertColors}>{actionText}</Button>
@@ -145,7 +184,13 @@ function Home() {
               </Box>
             </Box>
           </TextBlock>
-          <ImageBlock component='img' src={image} alt="background image"/>
+          <ImageBlock component='img' src={image} alt="background image" sx={{
+            [theme.breakpoints.down('tablet')]: {
+              ...(className === 'section1' && {
+                height: 294,
+              })
+            }
+          }}/>
         </Box>
         )
       }
@@ -217,7 +262,7 @@ function Home() {
       </Box>
       <Box sx={{
         display: 'flex',
-        my: '120px',
+        my: {tablet: '120px', mobile: 10},
         
         [theme.breakpoints.up('laptop')]: {
             mx: '165px',
@@ -228,7 +273,7 @@ function Home() {
         [theme.breakpoints.down('laptop')]: {
           flexDirection: 'column',
           '& > *': {
-            width: 457,
+            width: {tablet: 457, mobile: 310},
             mx: 'auto',
           },
           '& > * + *': {
@@ -242,7 +287,7 @@ function Home() {
             <Stack key={title} sx={{alignItems: 'center',justifyContent:'flex-end'}}>
               <Box sx={{flexGrow: 1, display:'flex',alignItems:'center'}}>{icon()}</Box>
               <Typography variant='h3' sx={{mt: 6}}>{title}</Typography>
-              <Typography variant='body' sx={{mt: 2}}>{content}</Typography>
+              <Typography variant='body' sx={{mt: 2, textAlign: 'center'}}>{content}</Typography>
             </Stack>
           )
         })}
