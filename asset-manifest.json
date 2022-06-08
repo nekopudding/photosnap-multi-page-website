@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/photosnap-multi-page-website/static/css/main.275ae289.css",
-    "main.js": "/photosnap-multi-page-website/static/js/main.0c8a178b.js",
+    "main.css": "/photosnap-multi-page-website/static/css/main.f5978df5.css",
+    "main.js": "/photosnap-multi-page-website/static/js/main.a27d330a.js",
     "static/js/787.f82a9365.chunk.js": "/photosnap-multi-page-website/static/js/787.f82a9365.chunk.js",
     "static/media/beautiful-stories.jpg": "/photosnap-multi-page-website/static/media/beautiful-stories.c53d42bed55e892d6a5e.jpg",
     "static/media/cityscapes.jpg": "/photosnap-multi-page-website/static/media/cityscapes.f5cf644be0371b9b30ec.jpg",
@@ -20,13 +20,15 @@
     "static/media/twitter.svg": "/photosnap-multi-page-website/static/media/twitter.f7273843e53cbee9e6d8b92e31a11b78.svg",
     "static/media/youtube.svg": "/photosnap-multi-page-website/static/media/youtube.1ca38f71b40f95fa105f77eae5fdb873.svg",
     "static/media/facebook.svg": "/photosnap-multi-page-website/static/media/facebook.2ba8a7084e017d7aab0a595e23659027.svg",
+    "static/media/close.svg": "/photosnap-multi-page-website/static/media/close.5121260d42c379b4895c0035730f6b2f.svg",
     "static/media/arrow.svg": "/photosnap-multi-page-website/static/media/arrow.7468e8d9eebae363e48d680154ab526f.svg",
-    "main.275ae289.css.map": "/photosnap-multi-page-website/static/css/main.275ae289.css.map",
-    "main.0c8a178b.js.map": "/photosnap-multi-page-website/static/js/main.0c8a178b.js.map",
+    "static/media/menu.svg": "/photosnap-multi-page-website/static/media/menu.6f63088500089901892d39e305d6d6dc.svg",
+    "main.f5978df5.css.map": "/photosnap-multi-page-website/static/css/main.f5978df5.css.map",
+    "main.a27d330a.js.map": "/photosnap-multi-page-website/static/js/main.a27d330a.js.map",
     "787.f82a9365.chunk.js.map": "/photosnap-multi-page-website/static/js/787.f82a9365.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.275ae289.css",
-    "static/js/main.0c8a178b.js"
+    "static/css/main.f5978df5.css",
+    "static/js/main.a27d330a.js"
   ]
 }
