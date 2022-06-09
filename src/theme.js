@@ -73,6 +73,7 @@ const theme = createTheme({
       letterSpacing: 2.5,
     },
     mobileH1: {
+      fontWeight: 700,
       fontSize: '32px',
       lineHeight: '40px',
       letterSpacing: 3.33,

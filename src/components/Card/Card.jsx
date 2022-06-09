@@ -21,7 +21,8 @@ function Card(props) {
           '&:hover .hover-border': {
             background: `linear-gradient(1deg, ${theme.palette.a1} 25%, ${theme.palette.a2} 50%, ${theme.palette.a3} 75%)`,
             height: 6
-          }
+          },
+          ...props.sx
         }}
       >
         <Box component='img' src={image} alt={title} sx={{position: 'absolute', objectFit: 'cover',  width: '100%', height: '100%'}}/>

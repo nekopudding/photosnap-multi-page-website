@@ -164,21 +164,21 @@ function Stories({windowW}) {
     }
   }
 
-  useEffect(()=> {
-    updateWidthState();
-  },[windowW])
-  
-  useEffect(()=> {
-    updateWidthState();
-    fetchStoriesImg();
-  },[])
-
   function updateWidthState(){
     if (windowW < theme.breakpoints.values.tablet) setWidthState(2);
     else if (windowW < theme.breakpoints.values.laptop) setWidthState(1);
     else setWidthState(2)
   }
 
+  useEffect(()=> {
+    updateWidthState();
+    fetchStoriesImg();
+  },[])
+
+  useEffect(()=> {
+    updateWidthState();
+  },[windowW])
+  
   useEffect(()=>{
     fetchStoriesImg();
     fetchHeaderImg();
@@ -187,8 +187,14 @@ function Stories({windowW}) {
 
   return (
     <>
+    {widthState < 2 ?
       <Box sx={{height: 650, width: '100%', pl: '112px', py: '122px', position: 'relative' }}>
-        <Box component='img' src={headerImg} sx={{position: 'absolute', objectFit: 'cover', zIndex: -1, width: '100%', height: '100%', left: 0, top: 0}}/>
+        <Box component='img' src={headerImg} sx={{
+          position: 'absolute', 
+          objectFit: 'cover', 
+          zIndex: -1, 
+          width: '100%', height: '100%', left: 0, top: 0
+        }}/>
         <Box sx={{width: 387, '& *':{color: 'white !important', stroke: 'white'}}}>
           <Typography variant='h4' sx={{textTransform: 'uppercase'}}>Last month's featured story</Typography>
           <Typography variant='h1' sx={{textTransform: 'uppercase', mt: 3}}>Hazy full moon of Appalachia</Typography>
@@ -204,8 +210,35 @@ function Stories({windowW}) {
           <ArrowButton>Read the story</ArrowButton>
         </Box>
       </Box>
+      : 
+      <>
+        <Box sx={{height: 317, width: '100%', pl: '112px', py: '122px', position: 'relative' }}>
+          <Box component='img' src={headerImg} sx={{
+            position: 'absolute', 
+            objectFit: 'cover', 
+            zIndex: -1, 
+            width: '100%', height: '100%', left: 0, top: 0
+          }}/>
+        </Box>
+        <Box sx={{px: '28px', py: 6, bgcolor: theme.palette.black, '& *':{color: 'white !important', stroke: 'white'}}}>
+          <Typography variant='h4' sx={{textTransform: 'uppercase'}}>Last month's featured story</Typography>
+          <Typography variant='mobileH1' sx={{textTransform: 'uppercase', mt: 2}} component='h1'>Hazy full moon of Appalachia</Typography>
+          <Box sx={{mt: 2}}>
+            <Typography variant='subheading' sx={{opacity: 0.75}}>March 2nd 2020</Typography>
+            <Typography component='span' variant='subheading' sx={{ml: 1}}>by John Appleseed</Typography>
+          </Box>
+          <Typography variant='body' component='p' sx={{my: 3}}>
+            The dissected plateau area, while not actually made up of geological mountains, 
+            is popularly called "mountains," especially in eastern Kentucky and West Virginia, 
+            and while the ridges are not high, the terrain is extremely rugged.
+          </Typography>
+          <ArrowButton>Read the story</ArrowButton>
+        </Box>
+      </>
+    }
+      
       <Box display="grid" gridTemplateColumns="repeat(12, 1fr)">
-        {images.length === stories.length && stories.map((story,index) => <Card {...story} image={images[index]} key={story.title}/>)}
+        {images.length === stories.length && stories.map((story,index) => <Card {...story} image={images[index]} key={story.title} sx={{height: {mobile: '100vw', tablet: 500}}} />)}
       </Box>
     </>
   )
