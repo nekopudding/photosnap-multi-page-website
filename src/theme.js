@@ -76,6 +76,11 @@ const theme = createTheme({
       fontSize: '32px',
       lineHeight: '40px',
       letterSpacing: 3.33,
+    },
+    subheading: {
+      fontSize: '13px',
+      lineHeight: '17px',
+      letterSpacing: 0,
     }
   },
 })

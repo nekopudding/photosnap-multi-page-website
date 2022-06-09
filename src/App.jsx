@@ -33,7 +33,7 @@ function App(props) {
             <Route index element={<Home />} />
             <Route path="features" element={<Features />} />
             <Route path="pricing" element={<Pricing />} />
-            <Route path="stories" element={<Stories />} />
+            <Route path="stories" element={<Stories windowW={windowW}/>} />
           </Route>
         </Routes>
         <Footer windowW={windowW}/>
