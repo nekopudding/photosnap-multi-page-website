@@ -180,7 +180,7 @@ function Stories({windowW}) {
   function updateWidthState(){
     if (windowW < theme.breakpoints.values.tablet) setWidthState(2);
     else if (windowW < theme.breakpoints.values.laptop) setWidthState(1);
-    else setWidthState(2)
+    else setWidthState(0)
   }
 
   useEffect(()=> {

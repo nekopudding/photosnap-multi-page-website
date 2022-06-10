@@ -19,7 +19,7 @@ function Card(props) {
             transform: 'translateY(-24px)',
           },
           '&:hover .hover-border': {
-            background: `linear-gradient(1deg, ${theme.palette.a1} 25%, ${theme.palette.a2} 50%, ${theme.palette.a3} 75%)`,
+            background: theme.palette.horizontalGradient,
             height: 6
           },
           ...props.sx

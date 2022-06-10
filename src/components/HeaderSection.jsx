@@ -31,13 +31,13 @@ const ImageBlock = styled(Box)(({ theme }) => ({
 
 export const SectionGradientBar = styled(Box)(({ theme }) => ({
   position: 'absolute', width: 6, height: '100%', 
-  background: `linear-gradient(88deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`,
+  background: theme.palette.verticalGradient,
   [theme.breakpoints.down('tablet')]:{
     top: 0,
     height: 6,
     width: 128,
     marginLeft: '33px',
-    background: `linear-gradient(3deg, ${theme.palette.a1} -10%, ${theme.palette.a2} 30%, ${theme.palette.a3} 90%)`,
+    background: theme.palette.horizontalGradient,
   }
 }));
 

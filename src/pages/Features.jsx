@@ -1,6 +1,5 @@
 import React from 'react'
 import hero from 'assets/features/desktop/hero.jpg'
-import betaBg from 'assets/shared/desktop/bg-beta.jpg'
 import HeaderSection, { SectionGradientBar } from 'components/HeaderSection'
 import {ReactComponent as Responsive} from 'assets/features/desktop/responsive.svg';
 import {ReactComponent as NoLimit} from 'assets/features/desktop/no-limit.svg';
@@ -9,10 +8,8 @@ import {ReactComponent as CustomDomain} from 'assets/features/desktop/custom-dom
 import {ReactComponent as BoostExposure} from 'assets/features/desktop/boost-exposure.svg';
 import {ReactComponent as DragDrop} from 'assets/features/desktop/drag-drop.svg';
 import { Box } from '@mui/system';
-import theme from 'theme';
 import FeatureCard from 'components/FeatureCard';
-import { Typography } from '@mui/material';
-import ArrowButton from 'components/Button/ArrowButton';
+import BetaSection from 'components/BetaSection';
 
 const heroSection =  {
   id: 1,
@@ -66,7 +63,7 @@ function Features() {
         gridRowGap: {laptop: '104px', tablet: '72px', mobile: '56px'},
         gridColumnGap: {laptop: '30px', tablet: '12px',mobile: '0px'},
         '& > *': {
-          gridColumn: {laptop: 'span 4', tablet: 'span 6', mobile: 'span 12'},
+          gridColumn: {laptop: 'span 4 !important', tablet: 'span 6 !important', mobile: 'span 12 !important'},
           width: {tablet: 'auto', mobile: 310},
           mx: 'auto'
         },
@@ -79,36 +76,7 @@ function Features() {
           )
         })}
       </Box>
-      <Box sx={{
-        position: 'relative',
-      }}>
-        <SectionGradientBar/>
-        <Box component='img' src={betaBg} sx={{
-          position: 'absolute',
-          objectFit: 'cover', 
-          zIndex: -1, 
-          width: '100%', height: '100%', left: 0, top: 0
-        }}/>
-        <Box sx={{
-          px: {laptop: '165px', tablet: '40px', mobile: '32px'}, 
-          height: '100%', 
-          py: {mobile: '64px', tablet: '68px'},
-          display: 'flex', alignItems: {tablet: 'center', mobile: 'start'}, 
-          '& *': {color: 'white', stroke: 'white'},
-          flexDirection: {tablet: 'row', mobile: 'column'},
-        }}>
-          <Typography variant='h1' sx={{
-            textTransform: 'uppercase', 
-            display: 'inline-block',
-            width: 400,
-            [theme.breakpoints.down('tablet')]: {...theme.typography.mobileH1, width: 'auto'},
-          }}>We're in Beta. Get your invite today!</Typography>
-          <Box sx={{flexGrow: 1}}/>
-          
-          <ArrowButton sx={{mt: {tablet: 0, mobile: 3} }}>Get an invite</ArrowButton>
-        </Box>
-        
-      </Box>
+      <BetaSection/>
     </>
   )
 }
