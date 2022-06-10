@@ -1,27 +1,44 @@
 import { Box, Typography } from '@mui/material'
 import Card from 'components/Card/Card'
 import React, { useEffect, useState } from 'react'
-// import theMountains from 'assets/stories/desktop/mountains.jpg'
-// import sunsetCityscapes from 'assets/stories/desktop/cityscapes.jpg'
-// import eighteenDaysVoyage from 'assets/stories/desktop/18-days-voyage.jpg'
-// import architecturals from 'assets/stories/desktop/architecturals.jpg'
+import theMountains from 'assets/stories/desktop/mountains.jpg'
+import sunsetCityscapes from 'assets/stories/desktop/cityscapes.jpg'
+import eighteenDaysVoyage from 'assets/stories/desktop/18-days-voyage.jpg'
+import architecturals from 'assets/stories/desktop/architecturals.jpg'
 
-// import behindTheWaves from 'assets/stories/desktop/behind-the-waves.jpg'
-// import calmWaters from 'assets/stories/desktop/calm-waters.jpg'
-// import darkForest from 'assets/stories/desktop/dark-forest.jpg'
-// import kingOfAfrica from 'assets/stories/desktop/king-on-africa.jpg'
-// import landOfDreams from 'assets/stories/desktop/land-of-dreams.jpg'
-// import milkyWay from 'assets/stories/desktop/milky-way.jpg'
-// import rageOfTheSea from 'assets/stories/desktop/rage-of-the-sea.jpg'
-// import runningFree from 'assets/stories/desktop/running-free.jpg'
-// import somwarpet from 'assets/stories/desktop/somwarpet.jpg'
-// import tripToNowhere from 'assets/stories/desktop/trip-to-nowhere.jpg'
-// import unforseenCorners from 'assets/stories/desktop/unforeseen-corners.jpg'
-// import worldTour from 'assets/stories/desktop/world-tour.jpg'
+import behindTheWaves from 'assets/stories/desktop/behind-the-waves.jpg'
+import calmWaters from 'assets/stories/desktop/calm-waters.jpg'
+import darkForest from 'assets/stories/desktop/dark-forest.jpg'
+import kingOfAfrica from 'assets/stories/desktop/king-on-africa.jpg'
+import landOfDreams from 'assets/stories/desktop/land-of-dreams.jpg'
+import milkyWay from 'assets/stories/desktop/milky-way.jpg'
+import rageOfTheSea from 'assets/stories/desktop/rage-of-the-sea.jpg'
+import runningFree from 'assets/stories/desktop/running-free.jpg'
+import somwarpet from 'assets/stories/desktop/somwarpet.jpg'
+import tripToNowhere from 'assets/stories/desktop/trip-to-nowhere.jpg'
+import unforseenCorners from 'assets/stories/desktop/unforeseen-corners.jpg'
+import worldTour from 'assets/stories/desktop/world-tour.jpg'
 import ArrowButton from 'components/Button/ArrowButton'
 import theme from 'theme'
 
-
+const defaultImageList = [
+  theMountains,
+  sunsetCityscapes,
+  eighteenDaysVoyage,
+  architecturals,
+  worldTour,
+  unforseenCorners,
+  kingOfAfrica,
+  tripToNowhere,
+  rageOfTheSea,
+  runningFree,
+  behindTheWaves,
+  calmWaters,
+  milkyWay,
+  darkForest,
+  somwarpet,
+  landOfDreams,
+]
 
 const stories = [
   {
@@ -127,8 +144,21 @@ function Stories({windowW}) {
   const [headerImg,setHeaderImg] = useState('');
   const [widthState,setWidthState] = useState(0); //0=desktop, 1=tablet, 2=mobile
 
-  function fetchStoriesImg() {
-    console.log('changing img');
+
+  function fetchHeaderImg(){
+    if (windowW >= theme.breakpoints.values.laptop) {
+      import('assets/stories/desktop/' + 'moon-of-appalacia.jpg')
+        .then(img => setHeaderImg(img.default))
+    }
+    else if (windowW >= theme.breakpoints.values.tablet){
+      import('assets/stories/tablet/' + 'moon-of-appalacia.jpg')
+        .then(img => setHeaderImg(img.default))
+    }
+    else {
+      import('assets/stories/mobile/' + 'moon-of-appalacia.jpg')
+      .then(img => setHeaderImg(img.default))
+    }
+
     let updatedStories = stories;
     let imageList = [];
     if (windowW >= theme.breakpoints.values.laptop) {
@@ -147,23 +177,6 @@ function Stories({windowW}) {
     }
   }
 
-  function fetchHeaderImg(){
-    let updatedStories = stories;
-    let imageList = [];
-    if (windowW >= theme.breakpoints.values.laptop) {
-      import('assets/stories/desktop/' + 'moon-of-appalacia.jpg')
-        .then(img => setHeaderImg(img.default))
-    }
-    else if (windowW >= theme.breakpoints.values.tablet){
-      import('assets/stories/tablet/' + 'moon-of-appalacia.jpg')
-        .then(img => setHeaderImg(img.default))
-    }
-    else {
-      import('assets/stories/mobile/' + 'moon-of-appalacia.jpg')
-      .then(img => setHeaderImg(img.default))
-    }
-  }
-
   function updateWidthState(){
     if (windowW < theme.breakpoints.values.tablet) setWidthState(2);
     else if (windowW < theme.breakpoints.values.laptop) setWidthState(1);
@@ -172,7 +185,6 @@ function Stories({windowW}) {
 
   useEffect(()=> {
     updateWidthState();
-    fetchStoriesImg();
   },[])
 
   useEffect(()=> {
@@ -180,7 +192,6 @@ function Stories({windowW}) {
   },[windowW])
   
   useEffect(()=>{
-    fetchStoriesImg();
     fetchHeaderImg();
   },[widthState])
   
@@ -238,7 +249,14 @@ function Stories({windowW}) {
     }
       
       <Box display="grid" gridTemplateColumns="repeat(12, 1fr)">
-        {images.length === stories.length && stories.map((story,index) => <Card {...story} image={images[index]} key={story.title} sx={{height: {mobile: '100vw', tablet: 500}}} />)}
+        {stories.map((story,index) =>  
+          <Card 
+            {...story} 
+            image={images.length === stories.length ? images[index] : defaultImageList[index]} 
+            key={story.title} 
+            sx={{height: {mobile: '100vw', tablet: 500}}}   
+          />
+        )}
       </Box>
     </>
   )
