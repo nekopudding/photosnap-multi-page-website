@@ -60,6 +60,7 @@ const theme = createTheme({
       fontSize: '12px',
       lineHeight: '16px',
       letterSpacing: 2,
+      textTransform: 'uppercase'
     },
     body: {
       fontWeight: 400,
