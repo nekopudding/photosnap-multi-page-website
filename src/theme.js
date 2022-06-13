@@ -26,7 +26,7 @@ const theme = createTheme({
     ..._,
 
     gradientBW: `rgba(0,0,0,0.0001) 0%, rgba(0,0,0,0.6612) 100%`,
-    horizontalGradient: `linear-gradient(1deg, ${_.a1} 10%, ${_.a2} 40%, ${_.a3} 80%)`,
+    horizontalGradient: `linear-gradient(1deg, ${_.a1} 0%, ${_.a2} 50%, ${_.a3} 90%)`,
     verticalGradient: `linear-gradient(88deg, ${_.a1} 0%, ${_.a2} 50%, ${_.a3} 100%)`,
     background: {
       default: _.white,
@@ -85,6 +85,14 @@ const theme = createTheme({
       fontSize: '13px',
       lineHeight: '17px',
       letterSpacing: 0,
+    },
+    mobileH4: {
+      fontWeight: 700,
+      fontSize: '10px',
+      lineHeight: '13px',
+      letterSpacing: 1.67,
+      textTransform: 'uppercase',
+      opacity: 0.5
     }
   },
 })
