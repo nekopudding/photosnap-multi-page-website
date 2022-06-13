@@ -27,7 +27,7 @@ const theme = createTheme({
 
     gradientBW: `rgba(0,0,0,0.0001) 0%, rgba(0,0,0,0.6612) 100%`,
     horizontalGradient: `linear-gradient(1deg, ${_.a1} 10%, ${_.a2} 40%, ${_.a3} 80%)`,
-    verticalGradient: `linear-gradient(88deg, ${_.a1} -10%, ${_.a2} 30%, ${_.a3} 90%)`,
+    verticalGradient: `linear-gradient(88deg, ${_.a1} 0%, ${_.a2} 50%, ${_.a3} 100%)`,
     background: {
       default: _.white,
     },

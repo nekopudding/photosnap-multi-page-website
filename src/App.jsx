@@ -32,7 +32,7 @@ function App(props) {
           <Route path="photosnap-multi-page-website">
             <Route index element={<Home />} />
             <Route path="features" element={<Features />} />
-            <Route path="pricing" element={<Pricing />} />
+            <Route path="pricing" element={<Pricing windowW={windowW}/>} />
             <Route path="stories" element={<Stories windowW={windowW}/>} />
           </Route>
         </Routes>

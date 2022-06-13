@@ -50,91 +50,125 @@ function createData(title, basic,pro,business) {
   return { title, basic,pro,business };
 }
 
-function Pricing() {
+function Pricing({windowW}) {
   const [isYearly,setIsYearly]= useState(false);
   return (
     <>
       <HeaderSection {...heroSection}/>
-      <Box sx={{mt: '120px', mb: '160px'}}>
+      <Box sx={{mt: '120px', mb: '160px', mx: {laptop: 'auto', mobile: 5}}}>
         <PlanToggle isYearly={isYearly} setIsYearly={setIsYearly} sx={{mx: 'auto'}}/>
-        <Box sx={{mt: 6, display: 'flex', justifyContent: 'center', '& > * + *': {ml: '30px'}, alignItems: 'center'}}>
-          {monthlyPlans.map(({title,body,price}, i) => {
-            return (
-              <Stack key={title} sx={{
-                width: 350, 
-                position: 'relative',
-                height: 'fit-content',
-                bgcolor: '#f5f5f5', 
-                pt: (i === 1) ? 11 : 7, 
-                pb: (i===1) ? 9 : 5, 
-                px: 5, 
-                justifyContent: 'center', 
-                '& *': {textAlign: 'center'},
-                ...(i === 1 && {
-                  bgcolor: theme.palette.black,
-                  '& > *': {color: theme.palette.white,textAlign: 'center'}
-                })
-              }}>
-                {i === 1 && <Box sx={{
-                  background: theme.palette.horizontalGradient,
-                  position: 'absolute', top: 0, left: 0,
-                  height: 6, width: '100%',
-                }}/>}
-                <Typography variant='h2'>{title}</Typography>
-                <Typography variant='body' sx={{mt: '18px'}}>{body}</Typography>
-                <Typography variant='h1' sx={{
-                  mt: '40px'
-                }}>{isYearly ? yearlyPrices[i] : price}</Typography>
-                <Typography variant='body'>{isYearly ? 'per year' : 'per month'}</Typography>
-                <Button variant='contained' sx={{width: '100%', mt: '40px'}} invertColors={i=== 1}>Pick Plan</Button>
-              </Stack>
-            )
-          })}
-        </Box>
+        {windowW > theme.breakpoints.values.laptop && 
+          <Box sx={{mt: 6, display: 'flex', justifyContent: 'center', '& > * + *': {ml: '30px'}, alignItems: 'center'}}>
+            {monthlyPlans.map(({title,body,price}, i) => {
+              return (
+                <Stack key={title} sx={{
+                  width: 350, 
+                  position: 'relative',
+                  height: 'fit-content',
+                  bgcolor: '#f5f5f5', 
+                  pt: (i === 1) ? 11 : 7, 
+                  pb: (i===1) ? 9 : 5, 
+                  px: 5, 
+                  justifyContent: 'center', 
+                  '& *': {textAlign: 'center'},
+                  ...(i === 1 && {
+                    bgcolor: theme.palette.black,
+                    '& > *': {color: theme.palette.white,textAlign: 'center'}
+                  })
+                }}>
+                  {i === 1 && <Box sx={{
+                    background: theme.palette.horizontalGradient,
+                    position: 'absolute', top: 0, left: 0,
+                    height: 6, width: '100%',
+                  }}/>}
+                  <Typography variant='h2'>{title}</Typography>
+                  <Typography variant='body' sx={{mt: '18px'}}>{body}</Typography>
+                  <Typography variant='h1' sx={{
+                    mt: '40px'
+                  }}>{isYearly ? yearlyPrices[i] : price}</Typography>
+                  <Typography variant='body'>{isYearly ? 'per year' : 'per month'}</Typography>
+                  <Button variant='contained' sx={{width: '100%', mt: '40px'}} invertColors={i=== 1}>Pick Plan</Button>
+                </Stack>
+              )
+            })}
+          </Box>
+        }
+        {windowW <= theme.breakpoints.values.laptop && 
+          <Box sx={{mt: 6, display: 'flex', flexDirection: 'column', '& > * + *': {mt: 3}}}>
+            {monthlyPlans.map(({title,body,price}, i) => {
+              return (
+                <Box key={title} sx={{
+                  position: 'relative',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  height: 'fit-content',
+                  bgcolor: '#f5f5f5', 
+                  p: 5,
+                  ...(i === 1 && {
+                    bgcolor: theme.palette.black,
+                    '& > *': {color: theme.palette.white}
+                  })
+                }}>
+                  {i === 1 && <Box sx={{
+                    background: theme.palette.verticalGradient,
+                    position: 'absolute', top: 0, left: 0,
+                    height: '100%', width: 6,
+                  }}/>}
+                  <Box sx={{width: 270}}>
+                    <Typography variant='h2'>{title}</Typography>
+                    <Typography variant='body' sx={{mt: '18px'}} component='p'>{body}</Typography>
+                    <Button variant='contained' sx={{width: '100%', mt: '32px'}} invertColors={i=== 1}>Pick Plan</Button>
+                  </Box>
+                  <Box>
+                    <Typography variant='h1'>{isYearly ? yearlyPrices[i] : price}</Typography>
+                    <Typography variant='body' component='p' textAlign='right' sx={{mr: 1.5}}>{isYearly ? 'per year' : 'per month'}</Typography>
+                  </Box>
+                  
+                  
+                </Box>
+              )
+            })}
+          </Box>
+        }
       </Box>
       
-      <Box sx={{mb: 20, mx: '354px'}}>
+      <Box sx={{mb: 20}}>
         <Typography variant='h1' sx={{
           textTransform: 'uppercase',
           textAlign: 'center'
         }}>Compare</Typography>
         
-        <TableContainer sx={{ mt: 7}}>
-      <Table sx={{ 
-        minWidth: 650, 
-        borderColor: theme.palette.grey,
-        '& *': {textAlign: 'center'},
-        '& th': {p: 3, }, 
-        '& tr th:first-of-type *': {textAlign: 'left'},
-        '& > thead th': {borderColor: 'black',p: 3, pt: 0 }, 
-        '& td': {position: 'relative'},
-      }} aria-label="pricing features table">
-        <TableHead>
-          <TableRow>
-            <TableCell><Typography variant='h4'>The Features</Typography></TableCell>
-            <TableCell><Typography variant='h4'>Basic</Typography></TableCell>
-            <TableCell><Typography variant='h4'>Pro</Typography></TableCell>
-            <TableCell><Typography variant='h4'>Business</Typography></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(({title,basic,pro,business}) => (
-            <TableRow
-              key={title}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <Typography variant='h4'>{title}</Typography>
-              </TableCell>
-              <TableCell>{basic && <Box sx={{ mx: 'auto', width: '18px', height: '18px'}}><CheckIcon/></Box>}</TableCell>
-              <TableCell>{pro && <Box sx={{ mx: 'auto', width: '18px', height: '18px'}}><CheckIcon/></Box>}</TableCell>
-              <TableCell>{business && <Box sx={{ mx: 'auto', width: '18px', height: '18px'}}><CheckIcon/></Box>}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
- 
+        <TableContainer sx={{ width: 'auto', maxWidth: {laptop: 731, mobile: 'auto'}, mt: 7,mx: {laptop: 'auto',tablet: 5}}}>
+          <Table sx={{ 
+            borderColor: theme.palette.grey,
+            '& *': {textAlign: 'center'},
+            '& th': {p: 3, }, 
+            '& tr th:first-of-type *': {textAlign: 'left'},
+            '& > thead th': {borderColor: 'black',p: 3, pt: 0 }, 
+            '& td': {position: 'relative'},
+          }} aria-label="pricing features table">
+            <TableHead>
+              <TableRow>
+                <TableCell><Typography variant='h4'>The Features</Typography></TableCell>
+                <TableCell><Typography variant='h4'>Basic</Typography></TableCell>
+                <TableCell><Typography variant='h4'>Pro</Typography></TableCell>
+                <TableCell><Typography variant='h4'>Business</Typography></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map(({title,basic,pro,business}) => (
+                <TableRow key={title}>
+                  <TableCell component="th" scope="row">
+                    <Typography variant='h4'>{title}</Typography>
+                  </TableCell>
+                  <TableCell>{basic && <Box sx={{ mx: 'auto', width: '18px', height: '18px'}}><CheckIcon/></Box>}</TableCell>
+                  <TableCell>{pro && <Box sx={{ mx: 'auto', width: '18px', height: '18px'}}><CheckIcon/></Box>}</TableCell>
+                  <TableCell>{business && <Box sx={{ mx: 'auto', width: '18px', height: '18px'}}><CheckIcon/></Box>}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Box>
       
 
