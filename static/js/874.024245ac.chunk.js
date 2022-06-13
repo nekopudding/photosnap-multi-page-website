@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[874],{1874:function(e,t,p){e.exports=p.p+"static/media/behind-the-waves.830a5f458c2782f6ee26.jpg"}}]);

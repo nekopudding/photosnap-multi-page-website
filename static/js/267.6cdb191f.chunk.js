@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[267],{7267:function(e,t,p){e.exports=p.p+"static/media/rage-of-the-sea.763dc05f6248fb8c8746.jpg"}}]);

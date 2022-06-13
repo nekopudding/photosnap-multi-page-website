@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[452],{9452:function(e,p,t){e.exports=t.p+"static/media/king-on-africa.46bb0121c1723a9ff4d3.jpg"}}]);

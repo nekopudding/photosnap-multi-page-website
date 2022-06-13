@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[281],{2281:function(e,s,p){e.exports=p.p+"static/media/unforeseen-corners.c1c8a9003fc5a561b3cb.jpg"}}]);

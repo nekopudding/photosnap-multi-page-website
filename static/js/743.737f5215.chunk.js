@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[743],{3743:function(e,t,p){e.exports=p.p+"static/media/architecturals.a3f9dc371f2eff2e697d.jpg"}}]);

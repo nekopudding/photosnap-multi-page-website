@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[943],{6943:function(e,t,p){e.exports=p.p+"static/media/mountains.bfd60073ca981f34bd97.jpg"}}]);

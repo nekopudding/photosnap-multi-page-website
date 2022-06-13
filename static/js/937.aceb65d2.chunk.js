@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[937],{4937:function(e,a,p){e.exports=p.p+"static/media/milky-way.5ae9a1f25576c40f68aa.jpg"}}]);

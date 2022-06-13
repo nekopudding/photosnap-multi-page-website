@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[795],{4795:function(e,t,p){e.exports=p.p+"static/media/trip-to-nowhere.1bffa8594f8eff9bb9b0.jpg"}}]);

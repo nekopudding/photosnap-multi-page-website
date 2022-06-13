@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[816],{4816:function(e,p,t){e.exports=t.p+"static/media/somwarpet.65e9fa957e019511657c.jpg"}}]);

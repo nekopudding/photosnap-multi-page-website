@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[988],{8988:function(e,p,s){e.exports=s.p+"static/media/cityscapes.333e560070c093aa40d3.jpg"}}]);

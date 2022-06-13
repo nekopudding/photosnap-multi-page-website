@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkphotosnap_multi_page_website=self.webpackChunkphotosnap_multi_page_website||[]).push([[522],{9522:function(e,t,p){e.exports=p.p+"static/media/dark-forest.d50938fc56d2483fb8a9.jpg"}}]);
